@@ -1,7 +1,6 @@
 version: '3.1'
 
 services:
-
   mongo:
     image: mongo
     restart: always
@@ -10,6 +9,10 @@ services:
     environment:
       MONGO_INITDB_ROOT_USERNAME: admin
       MONGO_INITDB_ROOT_PASSWORD: admin
+      MONGO_INITDB_DATABASE: db-food
+    volumes:
+      - ./mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
+      - mongo-data:/data/db
     networks:
       - vpfood
 
@@ -26,6 +29,8 @@ services:
       ME_CONFIG_BASICAUTH: 'false'
     networks:
       - vpfood
+volumes:
+  mongo-data:
 
 networks:
   vpfood:
