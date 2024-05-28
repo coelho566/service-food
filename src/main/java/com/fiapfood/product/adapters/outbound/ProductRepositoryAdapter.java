@@ -69,7 +69,7 @@ public class ProductRepositoryAdapter implements ProductRepositoryPort {
             return productByCategory.stream()
                     .map(product -> productMapper.productEntityToProductResponse(product)).collect(Collectors.toList());
         }else{
-            throw new ProductException("Product not found for the specified category");
+            throw new ProductException("Product not found for the specified category, inform the type categories 'Lanche', 'Acompanhamento', 'Sobremesa' e 'Bebida'");
         }
     }
 }

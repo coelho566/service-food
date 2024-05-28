@@ -1,6 +1,5 @@
 package com.fiapfood.product.application.config;
 
-import com.fiapfood.client.adapters.inbound.mapper.ClientMapper;
 import com.fiapfood.product.application.core.usecase.ProductUseCase;
 import com.fiapfood.product.application.ports.out.ProductRepositoryPort;
 import jakarta.enterprise.context.Dependent;

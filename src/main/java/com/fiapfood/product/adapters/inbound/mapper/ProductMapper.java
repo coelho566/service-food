@@ -15,7 +15,7 @@ public class ProductMapper {
         return ProductEntity.builder()
                 .name(product.name())
                 .description(product.description())
-                .category(product.category().getDescription())
+                .category(product.category().toLowerCase())
                 .price(product.price())
                 .image(product.image())
                 .availability(product.availability())

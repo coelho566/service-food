@@ -19,19 +19,25 @@ public class ProductUseCase implements ProductUseCasePort {
 
     @Override
     public void insertProduct(Product productRequest) {
+        if (CategoryEnum.hasDescription(productRequest.category()))
+            productRepositoryPort.insertProduct(productRequest);
+        else
+            throw new ProductException("Category does not exist, inform the 'LANCHE', 'ACOMPANHAMENTO', 'SOBREMESA' and 'BEBIDA' type categories");
 
-        productRepositoryPort.insertProduct(productRequest);
     }
 
     @Override
     public ProductResponse updateProduct(String productId, Product productRequest) {
-        return productRepositoryPort.updateProduct(productId, productRequest);
+        if (CategoryEnum.hasDescription(productRequest.category()))
+            return productRepositoryPort.updateProduct(productId, productRequest);
+        else
+            throw new ProductException("Category does not exist, inform the 'LANCHE', 'ACOMPANHAMENTO', 'SOBREMESA' and 'BEBIDA' type categories");
     }
 
     @Override
     public List<ProductResponse> getProductByCategory(String category) {
         if (CategoryEnum.hasDescription(category))
-            return productRepositoryPort.getProductByCategory(category);
+            return productRepositoryPort.getProductByCategory(category.toUpperCase());
         else
             throw new ProductException("Category does not exist");
     }
