@@ -23,13 +23,7 @@ Este projeto usa Quarkus, e Java 21
 
 ## Executando a aplicação utilizando o docker
 
-1. Build do projeto
-
-```shell script
-mvn clean install
-```
-
-2. Construir a imagem da aplicação executando o comando abaixo
+1. Construir a imagem da aplicação executando o comando abaixo
 
 ```shell script
 docker build -f src/main/docker/Dockerfile.jvm -t quarkus/service-food-jvm .
